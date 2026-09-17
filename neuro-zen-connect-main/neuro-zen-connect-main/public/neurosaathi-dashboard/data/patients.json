@@ -1,0 +1,23 @@
+[
+  {
+    "id": "p-001", "name": "Mrs. Sharma", "age": 78, "gender": "Female", "location": "Guwahati, Assam",
+    "language": "as", "caregiver": "Ananya Sharma (daughter)", "caregiverPhone": "+91 90000 00001",
+    "emergencyContact": "+91 90000 00002", "hospital": "Assam Medical Center",
+    "status": "Active", "lastActive": "9 min ago", "engagement": 78, "routine": 92,
+    "memory": 82, "attention": 74, "pattern": 80, "recall": 76, "alerts": 1, "avatar": "MS"
+  },
+  {
+    "id": "p-002", "name": "Mr. Boro", "age": 82, "gender": "Male", "location": "Kokrajhar, Assam",
+    "language": "as", "caregiver": "Rina Boro (niece)", "caregiverPhone": "+91 90000 00003",
+    "emergencyContact": "+91 90000 00004", "hospital": "Kokrajhar District Hospital",
+    "status": "Needs Attention", "lastActive": "3 h ago", "engagement": 54, "routine": 61,
+    "memory": 58, "attention": 49, "pattern": 57, "recall": 52, "alerts": 2, "avatar": "MB"
+  },
+  {
+    "id": "p-003", "name": "Mrs. Lyngdoh", "age": 74, "gender": "Female", "location": "Shillong, Meghalaya",
+    "language": "kha", "caregiver": "Banri Lyngdoh (son)", "caregiverPhone": "+91 90000 00005",
+    "emergencyContact": "+91 90000 00006", "hospital": "Shillong Civil Hospital",
+    "status": "Inactive", "lastActive": "2 days ago", "engagement": 41, "routine": 48,
+    "memory": 45, "attention": 40, "pattern": 43, "recall": 38, "alerts": 0, "avatar": "ML"
+  }
+]

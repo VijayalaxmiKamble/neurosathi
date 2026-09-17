@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" data-text-size="normal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patient Activity — NeuroSaathi</title>
+<meta name="description" content="Detailed activity, routine and engagement view for one patient.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <header id="topbar"></header>
+    <main class="content" id="main" tabindex="-1">
+      <div id="pd-root"></div>
+      <p class="disclaimer">NeuroSaathi supports daily routine, memory practice and caregiver coordination. It does not diagnose, treat or make any medical claim. Always follow your doctor's advice.</p>
+    </main>
+  </div>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/ai-engine.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/app.js"></script>
+<script src="js/patient-details.js"></script>
+<script>
+  NS.auth.requireAuth("caregiver");
+  NS.buildShell({ role: "caregiver", title: "Patient Activity", subtitle: "Detailed view" });
+  if (window.PAGE_INIT) window.PAGE_INIT();
+</script>
+</body>
+</html>

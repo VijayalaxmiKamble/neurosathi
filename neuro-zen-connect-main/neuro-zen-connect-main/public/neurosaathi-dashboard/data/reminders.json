@@ -1,0 +1,12 @@
+[
+  { "id": "r-001", "patientId": "p-001", "title": "Donepezil (as prescribed)", "type": "MEDICINE", "time": "08:30", "repeat": "Daily", "status": "completed", "priority": "high", "enabled": true, "notes": "Entered by caregiver" },
+  { "id": "r-002", "patientId": "p-001", "title": "Drink a glass of water", "type": "HYDRATION", "time": "10:00", "repeat": "Daily", "status": "completed", "priority": "medium", "enabled": true, "notes": "" },
+  { "id": "r-003", "patientId": "p-001", "title": "Breakfast", "type": "MEAL", "time": "08:00", "repeat": "Daily", "status": "completed", "priority": "medium", "enabled": true, "notes": "Jolpan with pitha" },
+  { "id": "r-004", "patientId": "p-001", "title": "Gentle yoga", "type": "EXERCISE", "time": "07:00", "repeat": "Daily", "status": "completed", "priority": "low", "enabled": true, "notes": "" },
+  { "id": "r-005", "patientId": "p-001", "title": "Memory Match session", "type": "COGNITIVE GAME", "time": "09:00", "repeat": "Daily", "status": "pending", "priority": "high", "enabled": true, "notes": "" },
+  { "id": "r-006", "patientId": "p-001", "title": "Afternoon water", "type": "HYDRATION", "time": "15:00", "repeat": "Daily", "status": "pending", "priority": "medium", "enabled": true, "notes": "" },
+  { "id": "r-007", "patientId": "p-001", "title": "Evening medicine (as prescribed)", "type": "MEDICINE", "time": "20:00", "repeat": "Daily", "status": "pending", "priority": "high", "enabled": true, "notes": "Entered by caregiver" },
+  { "id": "r-008", "patientId": "p-001", "title": "Check-up with Dr. Sharma", "type": "APPOINTMENT", "time": "14:30", "repeat": "Weekly", "status": "pending", "priority": "high", "enabled": true, "notes": "Assam Medical Center" },
+  { "id": "r-009", "patientId": "p-001", "title": "Call family", "type": "CUSTOM", "time": "17:00", "repeat": "Daily", "status": "pending", "priority": "low", "enabled": true, "notes": "Video call with grandson" },
+  { "id": "r-010", "patientId": "p-001", "title": "Sleep routine", "type": "SLEEP", "time": "21:30", "repeat": "Daily", "status": "pending", "priority": "medium", "enabled": true, "notes": "" }
+]

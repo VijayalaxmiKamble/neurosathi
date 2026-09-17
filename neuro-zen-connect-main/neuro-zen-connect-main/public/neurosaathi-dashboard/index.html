@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-text-size="normal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeuroSaathi — Cognitive Gaming & Memory Assistance for NER</title>
+<meta name="description" content="NeuroSaathi is an offline-friendly cognitive gaming and memory assistance dashboard for elderly users and caregivers in the North Eastern Region.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<main id="main" class="auth-wrap">
+  <section class="auth-hero">
+    <div class="brand" style="padding:0 0 18px">
+      <div class="brand-mark" aria-hidden="true">🧠</div>
+      <div class="brand-text"><strong style="font-size:1.3rem">NeuroSaathi</strong><span>Cognitive support for the North East</span></div>
+    </div>
+    <h1>Memory practice, daily routine and caregiver support — in your own language.</h1>
+    <ul class="hero-points">
+      <li>🧠 Four adaptive cognitive activities that adjust to how the day is going</li>
+      <li>⏰ Gentle reminders for medicines, meals, water and appointments</li>
+      <li>👥 A caregiver view with alerts, activity history and exportable reports</li>
+      <li>📶 Works offline — activities are stored on the device and synced later</li>
+      <li>🗣️ 10 regional languages including Assamese, Khasi, Mizo, Manipuri and Kokborok</li>
+    </ul>
+    <p class="small" style="opacity:.85">NeuroSaathi is a support and engagement tool. It does not diagnose or treat any condition.</p>
+  </section>
+
+  <section class="auth-card card">
+    <div class="tabs" role="tablist" aria-label="Choose role">
+      <button class="tab active" role="tab" aria-selected="true" data-role="patient">👤 Patient</button>
+      <button class="tab" role="tab" aria-selected="false" data-role="caregiver">👥 Caregiver</button>
+    </div>
+    <h2 id="auth-title">Patient sign in</h2>
+    <p class="muted small" id="auth-sub">Large text, big buttons and voice support are on by default.</p>
+
+    <form id="login-form" novalidate>
+      <div class="field">
+        <label for="username">Username</label>
+        <input id="username" name="username" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+      </div>
+      <div class="field">
+        <label for="login-lang">Preferred language</label>
+        <select id="login-lang"></select>
+      </div>
+      <p class="feedback" id="login-error" role="alert" style="color:var(--red);min-height:22px"></p>
+      <button class="btn btn-lg btn-block" type="submit">Sign in</button>
+    </form>
+
+    <div class="row" style="margin-top:14px">
+      <button class="btn btn-secondary" id="fill-patient">Use patient demo</button>
+      <button class="btn btn-secondary" id="fill-caregiver">Use caregiver demo</button>
+    </div>
+    <button class="btn btn-teal btn-block btn-lg" id="demo-mode" style="margin-top:12px">▶ Enter demo mode with sample data</button>
+
+    <div class="card lav small" style="margin-top:16px">
+      <strong>Demo credentials</strong>
+      <div>Patient — <code>patient</code> / <code>patient123</code></div>
+      <div>Caregiver — <code>caregiver</code> / <code>care123</code></div>
+    </div>
+  </section>
+</main>
+
+<script src="js/storage.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/ai-engine.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/app.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

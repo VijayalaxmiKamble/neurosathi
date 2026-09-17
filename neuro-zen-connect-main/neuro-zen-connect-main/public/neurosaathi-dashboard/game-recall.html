@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-text-size="normal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Routine Recall — NeuroSaathi</title>
+<meta name="description" content="Put the daily routine back in the right order.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/games.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <header id="topbar"></header>
+    <main class="content" id="main" tabindex="-1">
+      <div class="game-shell">
+        <div class="game-hud" id="game-hud"></div>
+        <div class="card" id="game-area"><h2>Put these activities in the right order</h2><div class="order-list" id="order-list"></div><button class="btn btn-lg btn-teal btn-block" id="check-order" style="margin-top:16px">Check my order</button></div>
+        <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+        <div class="row" style="margin-top:16px">
+          <button class="btn btn-secondary" id="hint-btn">💡 Hint</button>
+          <button class="btn btn-outline" id="restart-btn">🔄 Restart</button>
+          <a class="btn btn-outline" href="games.html">← Back to games</a>
+        </div>
+        <div class="card result-panel" id="result-panel" style="margin-top:18px"></div>
+      </div>
+      <p class="disclaimer">NeuroSaathi supports daily routine, memory practice and caregiver coordination. It does not diagnose, treat or make any medical claim. Always follow your doctor's advice.</p>
+    </main>
+  </div>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/ai-engine.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/app.js"></script>
+<script src="js/games.js"></script>
+<script src="js/game-recall.js"></script>
+<script>
+  NS.auth.requireAuth("patient");
+  NS.buildShell({ role: "patient", title: "Daily Routine Recall", subtitle: "Take your time. There is no wrong answer." });
+  if (window.PAGE_INIT) window.PAGE_INIT();
+</script>
+</body>
+</html>

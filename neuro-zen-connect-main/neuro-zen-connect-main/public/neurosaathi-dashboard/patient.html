@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-text-size="normal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patient Home — NeuroSaathi</title>
+<meta name="description" content="Daily routine, reminders, hydration and cognitive activities for elderly users.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <header id="topbar"></header>
+    <main class="content" id="main" tabindex="-1">
+      <section class="greeting" id="greeting"></section>
+      <section class="grid grid-4" id="quick-stats" style="margin-bottom:18px"></section>
+      <section class="grid grid-2" style="margin-bottom:18px">
+        <div class="card"><div class="card-head"><h2>Today's routine</h2><a class="btn btn-sm btn-secondary" href="daily-routine.html">Open routine</a></div>
+          <div class="timeline" id="routine-timeline"></div></div>
+        <div>
+          <div class="card" style="margin-bottom:16px"><div class="card-head"><h2>Water intake</h2><span class="badge" id="hydration-badge"></span></div>
+            <div class="glasses" id="glasses"></div>
+            <p class="small muted" style="margin-top:10px">Tap a glass after you drink water.</p></div>
+          <div class="card"><h2>Medicine check-in</h2><div class="list" id="medication-list"></div></div>
+        </div>
+      </section>
+      <section class="grid grid-2" style="margin-bottom:18px">
+        <div class="insight" id="ai-insight"></div>
+        <div class="card" id="voice" tabindex="-1"><div class="card-head"><h2>Voice assistant</h2><span class="badge" id="voice-status">Idle</span></div>
+          <p class="muted small">Try: "next reminder", "open games", "read my routine", "help".</p>
+          <div class="row"><button class="btn btn-lg btn-teal" id="voice-start">🎙️ Start listening</button>
+          <button class="btn btn-lg btn-outline" id="voice-stop">⏹️ Stop</button></div>
+          <p id="voice-transcript" class="small muted" style="margin-top:12px" aria-live="polite"></p></div>
+      </section>
+      <section class="card"><div class="card-head"><h2>Quick actions</h2></div>
+        <div class="row" id="quick-actions"></div></section>
+      <p class="disclaimer">NeuroSaathi supports daily routine, memory practice and caregiver coordination. It does not diagnose, treat or make any medical claim. Always follow your doctor's advice.</p>
+    </main>
+  </div>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/ai-engine.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/app.js"></script>
+<script src="js/voice.js"></script>
+<script src="js/patient.js"></script>
+<script>
+  NS.auth.requireAuth("patient");
+  NS.buildShell({ role: "patient", title: "Home", subtitle: "Your day at a glance" });
+  if (window.PAGE_INIT) window.PAGE_INIT();
+</script>
+</body>
+</html>

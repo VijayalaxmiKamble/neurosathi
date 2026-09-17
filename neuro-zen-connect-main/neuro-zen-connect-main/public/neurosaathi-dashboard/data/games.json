@@ -1,0 +1,6 @@
+[
+  { "id": "memory", "name": "Memory Match", "icon": "🃏", "skill": "memory", "description": "Flip cards and find matching pairs.", "page": "game-memory.html", "levels": ["EASY", "MEDIUM", "HARD"] },
+  { "id": "pattern", "name": "Pattern Recognition", "icon": "🎨", "skill": "pattern", "description": "Watch the colour sequence and repeat it.", "page": "game-pattern.html", "levels": ["EASY", "MEDIUM", "HARD"] },
+  { "id": "attention", "name": "Attention Tap", "icon": "🎯", "skill": "attention", "description": "Tap the friendly objects as they appear.", "page": "game-attention.html", "levels": ["EASY", "MEDIUM", "HARD"] },
+  { "id": "recall", "name": "Routine Recall", "icon": "🌅", "skill": "recall", "description": "Put the daily routine steps back in order.", "page": "game-recall.html", "levels": ["EASY", "MEDIUM", "HARD"] }
+]

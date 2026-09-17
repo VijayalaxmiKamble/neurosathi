@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-text-size="normal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alerts — NeuroSaathi</title>
+<meta name="description" content="Missed reminders, inactivity and engagement alerts for caregivers.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <header id="topbar"></header>
+    <main class="content" id="main" tabindex="-1">
+      <div class="filters"><select id="a-sev" aria-label="Filter by severity"><option value="all">All severities</option>
+        <option>HIGH</option><option>MEDIUM</option><option>LOW</option></select>
+        <select id="a-state" aria-label="Filter by state"><option value="open">Open</option>
+        <option value="ack">Acknowledged</option><option value="all">All</option></select>
+        <button class="btn btn-secondary" id="ack-all">✓ Acknowledge all</button></div>
+      <div class="list" id="alert-list"></div>
+      <p class="disclaimer">NeuroSaathi supports daily routine, memory practice and caregiver coordination. It does not diagnose, treat or make any medical claim. Always follow your doctor's advice.</p>
+    </main>
+  </div>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/ai-engine.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/app.js"></script>
+<script src="js/alerts.js"></script>
+<script>
+  NS.auth.requireAuth("caregiver");
+  NS.buildShell({ role: "caregiver", title: "Alerts", subtitle: "Things that may need your attention" });
+  if (window.PAGE_INIT) window.PAGE_INIT();
+</script>
+</body>
+</html>
