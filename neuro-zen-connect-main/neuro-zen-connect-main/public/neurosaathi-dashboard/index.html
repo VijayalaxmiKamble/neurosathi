@@ -11,14 +11,14 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<main id="main" class="auth-wrap">
-  <section class="auth-hero">
+<main id="main" class="auth-wrap" aria-label="NeuroSaathi sign in page">
+  <section class="auth-hero" aria-labelledby="hero-title">
     <div class="brand" style="padding:0 0 18px">
       <div class="brand-mark" aria-hidden="true">🧠</div>
       <div class="brand-text"><strong style="font-size:1.3rem">NeuroSaathi</strong><span>Cognitive support for the North East</span></div>
     </div>
-    <h1>Memory practice, daily routine and caregiver support — in your own language.</h1>
-    <ul class="hero-points">
+    <h1 id="hero-title">Memory practice, daily routine and caregiver support — in your own language.</h1>
+    <ul class="hero-points" aria-label="Platform highlights">
       <li>🧠 Four adaptive cognitive activities that adjust to how the day is going</li>
       <li>⏰ Gentle reminders for medicines, meals, water and appointments</li>
       <li>👥 A caregiver view with alerts, activity history and exportable reports</li>
@@ -28,38 +28,51 @@
     <p class="small" style="opacity:.85">NeuroSaathi is a support and engagement tool. It does not diagnose or treat any condition.</p>
   </section>
 
-  <section class="auth-card card">
+  <section class="auth-card card" aria-labelledby="auth-title">
     <div class="tabs" role="tablist" aria-label="Choose role">
-      <button class="tab active" role="tab" aria-selected="true" data-role="patient">👤 Patient</button>
-      <button class="tab" role="tab" aria-selected="false" data-role="caregiver">👥 Caregiver</button>
+      <button class="tab active" role="tab" aria-selected="true" data-role="patient" aria-controls="login-form">👤 Patient</button>
+      <button class="tab" role="tab" aria-selected="false" data-role="caregiver" aria-controls="login-form">👥 Caregiver</button>
     </div>
     <h2 id="auth-title">Patient sign in</h2>
     <p class="muted small" id="auth-sub">Large text, big buttons and voice support are on by default.</p>
 
-    <form id="login-form" novalidate>
+    <form id="login-form" novalidate aria-describedby="login-error">
       <div class="field">
         <label for="username">Username</label>
-        <input id="username" name="username" autocomplete="username" required>
+        <input id="username" name="username" autocomplete="username" required aria-required="true" placeholder="Enter your username">
       </div>
+
       <div class="field">
         <label for="password">Password</label>
-        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <div class="password-wrap">
+          <input id="password" name="password" type="password" autocomplete="current-password" required aria-required="true" placeholder="Enter your password">
+          <button type="button" class="ghost-toggle" id="toggle-password" aria-label="Show password" aria-pressed="false">Show</button>
+        </div>
       </div>
+
       <div class="field">
         <label for="login-lang">Preferred language</label>
-        <select id="login-lang"></select>
+        <select id="login-lang" aria-label="Preferred language"></select>
       </div>
-      <p class="feedback" id="login-error" role="alert" style="color:var(--red);min-height:22px"></p>
+
+      <div class="helper-row">
+        <label class="checkbox-row" for="remember-me">
+          <input id="remember-me" type="checkbox">
+          <span>Remember me</span>
+        </label>
+      </div>
+
+      <p class="feedback" id="login-error" role="alert" aria-live="polite"></p>
       <button class="btn btn-lg btn-block" type="submit">Sign in</button>
     </form>
 
-    <div class="row" style="margin-top:14px">
+    <div class="row demo-row" style="margin-top:14px">
       <button class="btn btn-secondary" id="fill-patient">Use patient demo</button>
       <button class="btn btn-secondary" id="fill-caregiver">Use caregiver demo</button>
     </div>
     <button class="btn btn-teal btn-block btn-lg" id="demo-mode" style="margin-top:12px">▶ Enter demo mode with sample data</button>
 
-    <div class="card lav small" style="margin-top:16px">
+    <div class="card lav small credential-box" style="margin-top:16px">
       <strong>Demo credentials</strong>
       <div>Patient — <code>patient</code> / <code>patient123</code></div>
       <div>Caregiver — <code>caregiver</code> / <code>care123</code></div>
