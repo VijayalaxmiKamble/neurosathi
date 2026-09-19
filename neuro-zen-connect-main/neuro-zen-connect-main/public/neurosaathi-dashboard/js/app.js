@@ -182,6 +182,13 @@
 
   /* ---------------- shell ---------------- */
   const buildShell = (opts = {}) => {
+    if (!document.querySelector('link[rel="icon"]')) {
+      const icon = document.createElement("link");
+      icon.rel = "icon";
+      icon.type = "image/svg+xml";
+      icon.href = "../neurosaathi-mark.svg";
+      document.head.appendChild(icon);
+    }
     const session = NS.auth ? NS.auth.getSession() : null;
     const role = opts.role || (session && session.role) || "patient";
     const patient = (NS.storage.getData(NS.storage.KEYS.patients, []) || [])[0] || { name: "Mrs. Sharma", avatar: "MS", age: 78 };
