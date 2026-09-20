@@ -17,14 +17,25 @@ import { Route as HelpRouteImport } from './routes/help'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MemoriesRouteImport } from './routes/memories'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RemindersRouteImport } from './routes/reminders'
-import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as UsersRouteImport } from './routes/users'
+import { Route as AchievementsIndexRouteImport } from './routes/achievements/index'
+import { Route as AiAssistantIndexRouteImport } from './routes/ai-assistant/index'
+import { Route as AnalyticsIndexRouteImport } from './routes/analytics/index'
+import { Route as AssessmentIndexRouteImport } from './routes/assessment/index'
+import { Route as DailyChallengeIndexRouteImport } from './routes/daily-challenge/index'
+import { Route as DailyPlanIndexRouteImport } from './routes/daily-plan/index'
+import { Route as FamilyDashboardIndexRouteImport } from './routes/family-dashboard/index'
 import { Route as GamesIndexRouteImport } from './routes/games/index'
 import { Route as GamesGameIdRouteImport } from './routes/games/$gameId'
+import { Route as LearningIndexRouteImport } from './routes/learning/index'
+import { Route as NotificationsIndexRouteImport } from './routes/notifications/index'
+import { Route as ReportsIndexRouteImport } from './routes/reports/index'
+import { Route as ResourcesIndexRouteImport } from './routes/resources/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -66,6 +77,11 @@ const MemoriesRoute = MemoriesRouteImport.update({
   path: '/memories',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgressRoute = ProgressRouteImport.update({
   id: '/progress',
   path: '/progress',
@@ -81,11 +97,6 @@ const RemindersRoute = RemindersRouteImport.update({
   path: '/reminders',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ReportsRoute = ReportsRouteImport.update({
-  id: '/reports',
-  path: '/reports',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -94,6 +105,41 @@ const SettingsRoute = SettingsRouteImport.update({
 const UsersRoute = UsersRouteImport.update({
   id: '/users',
   path: '/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AchievementsIndexRoute = AchievementsIndexRouteImport.update({
+  id: '/achievements/',
+  path: '/achievements/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiAssistantIndexRoute = AiAssistantIndexRouteImport.update({
+  id: '/ai-assistant/',
+  path: '/ai-assistant/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyticsIndexRoute = AnalyticsIndexRouteImport.update({
+  id: '/analytics/',
+  path: '/analytics/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssessmentIndexRoute = AssessmentIndexRouteImport.update({
+  id: '/assessment/',
+  path: '/assessment/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DailyChallengeIndexRoute = DailyChallengeIndexRouteImport.update({
+  id: '/daily-challenge/',
+  path: '/daily-challenge/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DailyPlanIndexRoute = DailyPlanIndexRouteImport.update({
+  id: '/daily-plan/',
+  path: '/daily-plan/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FamilyDashboardIndexRoute = FamilyDashboardIndexRouteImport.update({
+  id: '/family-dashboard/',
+  path: '/family-dashboard/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GamesIndexRoute = GamesIndexRouteImport.update({
@@ -106,6 +152,26 @@ const GamesGameIdRoute = GamesGameIdRouteImport.update({
   path: '/games/$gameId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LearningIndexRoute = LearningIndexRouteImport.update({
+  id: '/learning/',
+  path: '/learning/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsIndexRoute = NotificationsIndexRouteImport.update({
+  id: '/notifications/',
+  path: '/notifications/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsIndexRoute = ReportsIndexRouteImport.update({
+  id: '/reports/',
+  path: '/reports/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
+  id: '/resources/',
+  path: '/resources/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -116,14 +182,25 @@ export interface FileRoutesByFullPath {
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
   '/memories': typeof MemoriesRoute
+  '/profile': typeof ProfileRoute
   '/progress': typeof ProgressRoute
   '/register': typeof RegisterRoute
   '/reminders': typeof RemindersRoute
-  '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
   '/users': typeof UsersRoute
   '/games/$gameId': typeof GamesGameIdRoute
+  '/achievements/': typeof AchievementsIndexRoute
+  '/ai-assistant/': typeof AiAssistantIndexRoute
+  '/analytics/': typeof AnalyticsIndexRoute
+  '/assessment/': typeof AssessmentIndexRoute
+  '/daily-challenge/': typeof DailyChallengeIndexRoute
+  '/daily-plan/': typeof DailyPlanIndexRoute
+  '/family-dashboard/': typeof FamilyDashboardIndexRoute
   '/games/': typeof GamesIndexRoute
+  '/learning/': typeof LearningIndexRoute
+  '/notifications/': typeof NotificationsIndexRoute
+  '/reports/': typeof ReportsIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -134,14 +211,25 @@ export interface FileRoutesByTo {
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
   '/memories': typeof MemoriesRoute
+  '/profile': typeof ProfileRoute
   '/progress': typeof ProgressRoute
   '/register': typeof RegisterRoute
   '/reminders': typeof RemindersRoute
-  '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
   '/users': typeof UsersRoute
   '/games/$gameId': typeof GamesGameIdRoute
+  '/achievements': typeof AchievementsIndexRoute
+  '/ai-assistant': typeof AiAssistantIndexRoute
+  '/analytics': typeof AnalyticsIndexRoute
+  '/assessment': typeof AssessmentIndexRoute
+  '/daily-challenge': typeof DailyChallengeIndexRoute
+  '/daily-plan': typeof DailyPlanIndexRoute
+  '/family-dashboard': typeof FamilyDashboardIndexRoute
   '/games': typeof GamesIndexRoute
+  '/learning': typeof LearningIndexRoute
+  '/notifications': typeof NotificationsIndexRoute
+  '/reports': typeof ReportsIndexRoute
+  '/resources': typeof ResourcesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -153,14 +241,25 @@ export interface FileRoutesById {
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
   '/memories': typeof MemoriesRoute
+  '/profile': typeof ProfileRoute
   '/progress': typeof ProgressRoute
   '/register': typeof RegisterRoute
   '/reminders': typeof RemindersRoute
-  '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
   '/users': typeof UsersRoute
   '/games/$gameId': typeof GamesGameIdRoute
+  '/achievements/': typeof AchievementsIndexRoute
+  '/ai-assistant/': typeof AiAssistantIndexRoute
+  '/analytics/': typeof AnalyticsIndexRoute
+  '/assessment/': typeof AssessmentIndexRoute
+  '/daily-challenge/': typeof DailyChallengeIndexRoute
+  '/daily-plan/': typeof DailyPlanIndexRoute
+  '/family-dashboard/': typeof FamilyDashboardIndexRoute
   '/games/': typeof GamesIndexRoute
+  '/learning/': typeof LearningIndexRoute
+  '/notifications/': typeof NotificationsIndexRoute
+  '/reports/': typeof ReportsIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -173,14 +272,25 @@ export interface FileRouteTypes {
     | '/home'
     | '/login'
     | '/memories'
+    | '/profile'
     | '/progress'
     | '/register'
     | '/reminders'
-    | '/reports'
     | '/settings'
     | '/users'
     | '/games/$gameId'
+    | '/achievements/'
+    | '/ai-assistant/'
+    | '/analytics/'
+    | '/assessment/'
+    | '/daily-challenge/'
+    | '/daily-plan/'
+    | '/family-dashboard/'
     | '/games/'
+    | '/learning/'
+    | '/notifications/'
+    | '/reports/'
+    | '/resources/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -191,14 +301,25 @@ export interface FileRouteTypes {
     | '/home'
     | '/login'
     | '/memories'
+    | '/profile'
     | '/progress'
     | '/register'
     | '/reminders'
-    | '/reports'
     | '/settings'
     | '/users'
     | '/games/$gameId'
+    | '/achievements'
+    | '/ai-assistant'
+    | '/analytics'
+    | '/assessment'
+    | '/daily-challenge'
+    | '/daily-plan'
+    | '/family-dashboard'
     | '/games'
+    | '/learning'
+    | '/notifications'
+    | '/reports'
+    | '/resources'
   id:
     | '__root__'
     | '/'
@@ -209,14 +330,25 @@ export interface FileRouteTypes {
     | '/home'
     | '/login'
     | '/memories'
+    | '/profile'
     | '/progress'
     | '/register'
     | '/reminders'
-    | '/reports'
     | '/settings'
     | '/users'
     | '/games/$gameId'
+    | '/achievements/'
+    | '/ai-assistant/'
+    | '/analytics/'
+    | '/assessment/'
+    | '/daily-challenge/'
+    | '/daily-plan/'
+    | '/family-dashboard/'
     | '/games/'
+    | '/learning/'
+    | '/notifications/'
+    | '/reports/'
+    | '/resources/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -228,14 +360,25 @@ export interface RootRouteChildren {
   HomeRoute: typeof HomeRoute
   LoginRoute: typeof LoginRoute
   MemoriesRoute: typeof MemoriesRoute
+  ProfileRoute: typeof ProfileRoute
   ProgressRoute: typeof ProgressRoute
   RegisterRoute: typeof RegisterRoute
   RemindersRoute: typeof RemindersRoute
-  ReportsRoute: typeof ReportsRoute
   SettingsRoute: typeof SettingsRoute
   UsersRoute: typeof UsersRoute
   GamesGameIdRoute: typeof GamesGameIdRoute
+  AchievementsIndexRoute: typeof AchievementsIndexRoute
+  AiAssistantIndexRoute: typeof AiAssistantIndexRoute
+  AnalyticsIndexRoute: typeof AnalyticsIndexRoute
+  AssessmentIndexRoute: typeof AssessmentIndexRoute
+  DailyChallengeIndexRoute: typeof DailyChallengeIndexRoute
+  DailyPlanIndexRoute: typeof DailyPlanIndexRoute
+  FamilyDashboardIndexRoute: typeof FamilyDashboardIndexRoute
   GamesIndexRoute: typeof GamesIndexRoute
+  LearningIndexRoute: typeof LearningIndexRoute
+  NotificationsIndexRoute: typeof NotificationsIndexRoute
+  ReportsIndexRoute: typeof ReportsIndexRoute
+  ResourcesIndexRoute: typeof ResourcesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -296,6 +439,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MemoriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/progress': {
       id: '/progress'
       path: '/progress'
@@ -317,13 +467,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RemindersRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/reports': {
-      id: '/reports'
-      path: '/reports'
-      fullPath: '/reports'
-      preLoaderRoute: typeof ReportsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -336,6 +479,55 @@ declare module '@tanstack/react-router' {
       path: '/users'
       fullPath: '/users'
       preLoaderRoute: typeof UsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/achievements/': {
+      id: '/achievements/'
+      path: '/achievements'
+      fullPath: '/achievements/'
+      preLoaderRoute: typeof AchievementsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-assistant/': {
+      id: '/ai-assistant/'
+      path: '/ai-assistant'
+      fullPath: '/ai-assistant/'
+      preLoaderRoute: typeof AiAssistantIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analytics/': {
+      id: '/analytics/'
+      path: '/analytics'
+      fullPath: '/analytics/'
+      preLoaderRoute: typeof AnalyticsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assessment/': {
+      id: '/assessment/'
+      path: '/assessment'
+      fullPath: '/assessment/'
+      preLoaderRoute: typeof AssessmentIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/daily-challenge/': {
+      id: '/daily-challenge/'
+      path: '/daily-challenge'
+      fullPath: '/daily-challenge/'
+      preLoaderRoute: typeof DailyChallengeIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/daily-plan/': {
+      id: '/daily-plan/'
+      path: '/daily-plan'
+      fullPath: '/daily-plan/'
+      preLoaderRoute: typeof DailyPlanIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/family-dashboard/': {
+      id: '/family-dashboard/'
+      path: '/family-dashboard'
+      fullPath: '/family-dashboard/'
+      preLoaderRoute: typeof FamilyDashboardIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/games/': {
@@ -352,6 +544,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GamesGameIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/learning/': {
+      id: '/learning/'
+      path: '/learning'
+      fullPath: '/learning/'
+      preLoaderRoute: typeof LearningIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications/': {
+      id: '/notifications/'
+      path: '/notifications'
+      fullPath: '/notifications/'
+      preLoaderRoute: typeof NotificationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports/': {
+      id: '/reports/'
+      path: '/reports'
+      fullPath: '/reports/'
+      preLoaderRoute: typeof ReportsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/': {
+      id: '/resources/'
+      path: '/resources'
+      fullPath: '/resources/'
+      preLoaderRoute: typeof ResourcesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -364,14 +584,25 @@ const rootRouteChildren: RootRouteChildren = {
   HomeRoute: HomeRoute,
   LoginRoute: LoginRoute,
   MemoriesRoute: MemoriesRoute,
+  ProfileRoute: ProfileRoute,
   ProgressRoute: ProgressRoute,
   RegisterRoute: RegisterRoute,
   RemindersRoute: RemindersRoute,
-  ReportsRoute: ReportsRoute,
   SettingsRoute: SettingsRoute,
   UsersRoute: UsersRoute,
   GamesGameIdRoute: GamesGameIdRoute,
+  AchievementsIndexRoute: AchievementsIndexRoute,
+  AiAssistantIndexRoute: AiAssistantIndexRoute,
+  AnalyticsIndexRoute: AnalyticsIndexRoute,
+  AssessmentIndexRoute: AssessmentIndexRoute,
+  DailyChallengeIndexRoute: DailyChallengeIndexRoute,
+  DailyPlanIndexRoute: DailyPlanIndexRoute,
+  FamilyDashboardIndexRoute: FamilyDashboardIndexRoute,
   GamesIndexRoute: GamesIndexRoute,
+  LearningIndexRoute: LearningIndexRoute,
+  NotificationsIndexRoute: NotificationsIndexRoute,
+  ReportsIndexRoute: ReportsIndexRoute,
+  ResourcesIndexRoute: ResourcesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

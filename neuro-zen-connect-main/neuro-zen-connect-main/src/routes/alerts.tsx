@@ -21,7 +21,7 @@ function AlertsPageComponent() {
               <div key={a.id} className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border bg-card p-4">
                 <div>
                   <div className="flex items-center gap-2 font-bold">
-                    <span className={`inline-block size-3 rounded-full ${a.severity === "HIGH" ? "bg-red-500" : "bg-amber-500"}`} />
+                    <span className={`inline-block size-3 rounded-full ${a.severity === "HIGH" ? "bg-destructive" : "bg-warning"}`} />
                     {a.category} · {a.patient}
                   </div>
                   <p className="text-muted-foreground">{a.message}</p>
@@ -37,7 +37,7 @@ function AlertsPageComponent() {
                     Acknowledge
                   </Button>
                 ) : (
-                  <span className="text-sm text-teal-700">✓ Acknowledged</span>
+                  <span className="text-sm text-success">✓ Acknowledged</span>
                 )}
               </div>
             ))}

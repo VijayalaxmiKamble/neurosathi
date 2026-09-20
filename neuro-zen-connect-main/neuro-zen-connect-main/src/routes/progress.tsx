@@ -25,7 +25,7 @@ function ProgressPageComponent() {
                   <div className="text-sm text-muted-foreground">{s.date} · {s.difficulty} · {s.timeSec}s</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-2xl font-bold text-teal-700">{s.accuracy}%</div>
+                  <div className="text-2xl font-bold text-primary">{s.accuracy}%</div>
                   <div className="text-sm text-muted-foreground">{t("accuracy")}</div>
                 </div>
               </div>

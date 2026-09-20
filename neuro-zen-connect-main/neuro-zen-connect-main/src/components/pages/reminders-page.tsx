@@ -77,7 +77,7 @@ export function RemindersPage() {
         ))}
       </div>
       {editing ? (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4">
+        <div className="fixed inset-0 z-50 grid place-items-center bg-foreground/55 p-4">
           <form
             className="w-full max-w-lg space-y-3 rounded-2xl bg-card p-6"
             onSubmit={(e) => {

@@ -26,7 +26,7 @@ export function GamesHubPage() {
   return (
     <AppShell title={t("navGames")}>
       {recs[0] ? (
-        <div className="mb-5 rounded-2xl border bg-teal-50 p-5 dark:bg-teal-950">
+        <div className="mb-5 rounded-2xl border border-primary/20 bg-secondary/60 p-5">
           <h2 className="text-xl font-bold">{t("recommended")}</h2>
           <p className="mt-1 text-lg">{recs[0].title}</p>
           <Button className="mt-3 min-h-12" asChild>

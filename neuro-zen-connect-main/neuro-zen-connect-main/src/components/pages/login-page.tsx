@@ -40,11 +40,11 @@ export function LoginPage() {
   };
 
   return (
-    <div className="min-h-dvh bg-[oklch(0.97_0.01_240)] dark:bg-background">
+    <div className="min-h-dvh bg-background">
       <div className="mx-auto grid max-w-6xl gap-8 p-6 lg:grid-cols-2 lg:items-center">
         <section className="space-y-4">
           <div className="flex items-center gap-3 text-3xl font-bold">
-            <span className="grid size-12 place-items-center rounded-xl bg-teal-600 text-white">🧠</span>
+            <span className="grid size-12 place-items-center rounded-xl bg-primary text-primary-foreground shadow-sm">🧠</span>
             {t("appName")}
           </div>
           <h1 className="text-3xl font-bold leading-tight md:text-4xl">{t("tagline")}</h1>
@@ -62,7 +62,7 @@ export function LoginPage() {
               <button
                 key={r}
                 type="button"
-                className={`min-h-14 rounded-xl border text-lg font-semibold ${role === r ? "bg-teal-700 text-white" : ""}`}
+                className={`min-h-14 rounded-xl border text-lg font-semibold ${role === r ? "bg-primary text-primary-foreground shadow-sm" : "bg-card hover:bg-accent"}`}
                 onClick={() => setRole(r)}
               >
                 {r === "patient" ? t("elderly") : t("caregiver")}
@@ -111,7 +111,7 @@ export function LoginPage() {
           </div>
           <Button
             type="button"
-            className="mt-3 min-h-14 w-full bg-teal-700 text-lg text-white hover:bg-teal-800"
+            className="mt-3 min-h-14 w-full text-lg"
             onClick={() => {
               seed(true);
               const res = login("patient", "patient123", "patient");
@@ -126,7 +126,7 @@ export function LoginPage() {
           </Button>
           <p className="mt-4 text-center text-base">
             {t("noAccount")}{" "}
-            <Link to="/register" className="font-semibold text-teal-800 underline">
+            <Link to="/register" className="font-semibold text-primary underline underline-offset-4">
               {t("register")}
             </Link>
           </p>

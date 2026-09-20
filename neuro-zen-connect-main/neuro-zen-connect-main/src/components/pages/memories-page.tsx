@@ -85,7 +85,7 @@ export function MemoriesPage() {
         ))}
       </div>
       {detail ? (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4" role="dialog">
+        <div className="fixed inset-0 z-50 grid place-items-center bg-foreground/55 p-4" role="dialog">
           <div className="max-h-[90vh] w-full max-w-lg overflow-auto rounded-2xl bg-card p-6">
             <h3 className="text-2xl font-bold">{detail.title}</h3>
             <p className="text-muted-foreground">{detail.category} · {detail.date}</p>
@@ -96,7 +96,7 @@ export function MemoriesPage() {
         </div>
       ) : null}
       {editing ? (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4" role="dialog">
+        <div className="fixed inset-0 z-50 grid place-items-center bg-foreground/55 p-4" role="dialog">
           <form
             className="w-full max-w-lg space-y-3 rounded-2xl bg-card p-6"
             onSubmit={(e) => {
