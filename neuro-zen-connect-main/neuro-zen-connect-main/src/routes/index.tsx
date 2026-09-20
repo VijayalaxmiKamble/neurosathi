@@ -1,4 +1,5 @@
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { LoginPage } from "@/components/pages/login-page";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -19,12 +20,5 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  loader: () => {
-    if (typeof window !== "undefined") {
-      window.location.replace("/neurosaathi-dashboard/index.html");
-      return new Promise(() => {});
-    }
-    throw redirect({ href: "/neurosaathi-dashboard/index.html" });
-  },
-  component: () => null,
+  component: LoginPage,
 });

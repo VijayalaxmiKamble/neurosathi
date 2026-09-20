@@ -65,14 +65,14 @@ export function recordSession(session: Omit<GameSession, "id" | "patientId" | "d
     date: session.date ?? today(),
     game: session.game,
     accuracy: session.accuracy,
-    score: session.score,
+    ...(session.score !== undefined ? { score: session.score } : {}),
     attempts: session.attempts,
     timeSec: session.timeSec,
     mistakes: session.mistakes,
     hintsUsed: session.hintsUsed,
     completed: session.completed ?? true,
     difficulty: session.difficulty,
-    streak: session.streak,
+    ...(session.streak !== undefined ? { streak: session.streak } : {}),
   };
   upsertInList(KEYS.sessions, s as unknown as Record<string, unknown>);
   const stats = getData<Record<string, GameStats>>(KEYS.gameStats, {});

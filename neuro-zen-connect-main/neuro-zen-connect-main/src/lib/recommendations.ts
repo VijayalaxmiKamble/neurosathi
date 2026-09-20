@@ -21,8 +21,8 @@ function localRecommendations(patientId: string): Recommendation[] {
   const sessions = getData<GameSession[]>(KEYS.sessions, []).filter((s) => s.patientId === patientId);
   const todayCount = sessions.filter((s) => s.date === today()).length;
   const weakest = Object.entries(avgs).sort((a, b) => a[1] - b[1])[0];
-  const pattern = avgs.pattern ?? 0;
-  const numbers = avgs.numbers ?? 0;
+  const pattern = avgs["pattern"] ?? 0;
+  const numbers = avgs["numbers"] ?? 0;
   const recs: Recommendation[] = [];
 
   if (todayCount === 0) {

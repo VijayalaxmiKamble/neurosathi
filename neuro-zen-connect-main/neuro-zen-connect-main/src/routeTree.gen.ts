@@ -10,33 +10,232 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as AppointmentsRouteImport } from './routes/appointments'
+import { Route as CaregiverRouteImport } from './routes/caregiver'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as MemoriesRouteImport } from './routes/memories'
+import { Route as ProgressRouteImport } from './routes/progress'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as RemindersRouteImport } from './routes/reminders'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as UsersRouteImport } from './routes/users'
+import { Route as GamesIndexRouteImport } from './routes/games/index'
+import { Route as GamesGameIdRouteImport } from './routes/games/$gameId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlertsRoute = AlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppointmentsRoute = AppointmentsRouteImport.update({
+  id: '/appointments',
+  path: '/appointments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaregiverRoute = CaregiverRouteImport.update({
+  id: '/caregiver',
+  path: '/caregiver',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemoriesRoute = MemoriesRouteImport.update({
+  id: '/memories',
+  path: '/memories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgressRoute = ProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RemindersRoute = RemindersRouteImport.update({
+  id: '/reminders',
+  path: '/reminders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UsersRoute = UsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesIndexRoute = GamesIndexRouteImport.update({
+  id: '/games/',
+  path: '/games/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesGameIdRoute = GamesGameIdRouteImport.update({
+  id: '/games/$gameId',
+  path: '/games/$gameId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/appointments': typeof AppointmentsRoute
+  '/caregiver': typeof CaregiverRoute
+  '/help': typeof HelpRoute
+  '/home': typeof HomeRoute
+  '/login': typeof LoginRoute
+  '/memories': typeof MemoriesRoute
+  '/progress': typeof ProgressRoute
+  '/register': typeof RegisterRoute
+  '/reminders': typeof RemindersRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/users': typeof UsersRoute
+  '/games/$gameId': typeof GamesGameIdRoute
+  '/games/': typeof GamesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/appointments': typeof AppointmentsRoute
+  '/caregiver': typeof CaregiverRoute
+  '/help': typeof HelpRoute
+  '/home': typeof HomeRoute
+  '/login': typeof LoginRoute
+  '/memories': typeof MemoriesRoute
+  '/progress': typeof ProgressRoute
+  '/register': typeof RegisterRoute
+  '/reminders': typeof RemindersRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/users': typeof UsersRoute
+  '/games/$gameId': typeof GamesGameIdRoute
+  '/games': typeof GamesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/appointments': typeof AppointmentsRoute
+  '/caregiver': typeof CaregiverRoute
+  '/help': typeof HelpRoute
+  '/home': typeof HomeRoute
+  '/login': typeof LoginRoute
+  '/memories': typeof MemoriesRoute
+  '/progress': typeof ProgressRoute
+  '/register': typeof RegisterRoute
+  '/reminders': typeof RemindersRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/users': typeof UsersRoute
+  '/games/$gameId': typeof GamesGameIdRoute
+  '/games/': typeof GamesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/alerts'
+    | '/appointments'
+    | '/caregiver'
+    | '/help'
+    | '/home'
+    | '/login'
+    | '/memories'
+    | '/progress'
+    | '/register'
+    | '/reminders'
+    | '/reports'
+    | '/settings'
+    | '/users'
+    | '/games/$gameId'
+    | '/games/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/alerts'
+    | '/appointments'
+    | '/caregiver'
+    | '/help'
+    | '/home'
+    | '/login'
+    | '/memories'
+    | '/progress'
+    | '/register'
+    | '/reminders'
+    | '/reports'
+    | '/settings'
+    | '/users'
+    | '/games/$gameId'
+    | '/games'
+  id:
+    | '__root__'
+    | '/'
+    | '/alerts'
+    | '/appointments'
+    | '/caregiver'
+    | '/help'
+    | '/home'
+    | '/login'
+    | '/memories'
+    | '/progress'
+    | '/register'
+    | '/reminders'
+    | '/reports'
+    | '/settings'
+    | '/users'
+    | '/games/$gameId'
+    | '/games/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AlertsRoute: typeof AlertsRoute
+  AppointmentsRoute: typeof AppointmentsRoute
+  CaregiverRoute: typeof CaregiverRoute
+  HelpRoute: typeof HelpRoute
+  HomeRoute: typeof HomeRoute
+  LoginRoute: typeof LoginRoute
+  MemoriesRoute: typeof MemoriesRoute
+  ProgressRoute: typeof ProgressRoute
+  RegisterRoute: typeof RegisterRoute
+  RemindersRoute: typeof RemindersRoute
+  ReportsRoute: typeof ReportsRoute
+  SettingsRoute: typeof SettingsRoute
+  UsersRoute: typeof UsersRoute
+  GamesGameIdRoute: typeof GamesGameIdRoute
+  GamesIndexRoute: typeof GamesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +247,131 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/alerts': {
+      id: '/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/appointments': {
+      id: '/appointments'
+      path: '/appointments'
+      fullPath: '/appointments'
+      preLoaderRoute: typeof AppointmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/caregiver': {
+      id: '/caregiver'
+      path: '/caregiver'
+      fullPath: '/caregiver'
+      preLoaderRoute: typeof CaregiverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/memories': {
+      id: '/memories'
+      path: '/memories'
+      fullPath: '/memories'
+      preLoaderRoute: typeof MemoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progress': {
+      id: '/progress'
+      path: '/progress'
+      fullPath: '/progress'
+      preLoaderRoute: typeof ProgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reminders': {
+      id: '/reminders'
+      path: '/reminders'
+      fullPath: '/reminders'
+      preLoaderRoute: typeof RemindersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/users': {
+      id: '/users'
+      path: '/users'
+      fullPath: '/users'
+      preLoaderRoute: typeof UsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games/': {
+      id: '/games/'
+      path: '/games'
+      fullPath: '/games/'
+      preLoaderRoute: typeof GamesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games/$gameId': {
+      id: '/games/$gameId'
+      path: '/games/$gameId'
+      fullPath: '/games/$gameId'
+      preLoaderRoute: typeof GamesGameIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AlertsRoute: AlertsRoute,
+  AppointmentsRoute: AppointmentsRoute,
+  CaregiverRoute: CaregiverRoute,
+  HelpRoute: HelpRoute,
+  HomeRoute: HomeRoute,
+  LoginRoute: LoginRoute,
+  MemoriesRoute: MemoriesRoute,
+  ProgressRoute: ProgressRoute,
+  RegisterRoute: RegisterRoute,
+  RemindersRoute: RemindersRoute,
+  ReportsRoute: ReportsRoute,
+  SettingsRoute: SettingsRoute,
+  UsersRoute: UsersRoute,
+  GamesGameIdRoute: GamesGameIdRoute,
+  GamesIndexRoute: GamesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

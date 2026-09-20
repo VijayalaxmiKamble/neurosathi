@@ -458,8 +458,8 @@ export const LANGUAGES = [
 
 export function t(key: string, vars?: Record<string, string | number>): string {
   const lang = getSettings().language || "en";
-  const dict = dictionaries[lang] ?? dictionaries.en;
-  const en = dictionaries.en ?? {};
+  const dict = dictionaries[lang] ?? dictionaries["en"];
+  const en = dictionaries["en"] ?? {};
   let s = dict?.[key] ?? en[key] ?? key;
   if (vars) {
     for (const [k, v] of Object.entries(vars)) {

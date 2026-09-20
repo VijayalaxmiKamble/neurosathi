@@ -69,14 +69,14 @@ export function clearAll(): void {
   Object.values(KEYS).forEach((k) => removeData(k));
 }
 
-export function updateData<T extends Record<string, unknown>>(key: string, patch: Partial<T>): T {
+export function updateData<T extends object>(key: string, patch: Partial<T>): T {
   const current = getData<T>(key, {} as T);
   const next = { ...current, ...patch };
   saveData(key, next);
   return next;
 }
 
-export function upsertInList<T extends Record<string, unknown>>(
+export function upsertInList<T extends object>(
   key: string,
   item: T,
   idField: keyof T = "id" as keyof T,
@@ -93,7 +93,7 @@ export function upsertInList<T extends Record<string, unknown>>(
   return list;
 }
 
-export function removeFromList<T extends Record<string, unknown>>(
+export function removeFromList<T extends object>(
   key: string,
   id: string,
   idField: keyof T = "id" as keyof T,
@@ -320,10 +320,10 @@ export function getSettings(): AppSettings {
 export function applyDocumentSettings(settings: AppSettings): void {
   if (typeof document === "undefined") return;
   const r = document.documentElement;
-  r.dataset.textSize = settings.textSize;
-  r.dataset.contrast = settings.contrast;
-  r.dataset.motion = settings.motion;
-  r.dataset.theme = settings.theme;
+  r.dataset["textSize"] = settings.textSize;
+  r.dataset["contrast"] = settings.contrast;
+  r.dataset["motion"] = settings.motion;
+  r.dataset["theme"] = settings.theme;
   r.lang = settings.language || "en";
   r.classList.toggle("dark", settings.theme === "dark");
   r.classList.toggle("high-contrast", settings.contrast === "high");
