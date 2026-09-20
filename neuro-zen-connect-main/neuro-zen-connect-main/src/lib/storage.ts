@@ -31,6 +31,14 @@ export const KEYS = {
   memories: "memories",
   users: "users",
   gameStats: "gameStats",
+  learning: "learning",
+  dailyTasks: "dailyTasks",
+  dailyChallenge: "dailyChallenge",
+  achievements: "achievements",
+  notifications: "notifications",
+  resourceBookmarks: "resourceBookmarks",
+  recentResources: "recentResources",
+  assessmentResults: "assessmentResults",
 } as const;
 
 export function today(): string {

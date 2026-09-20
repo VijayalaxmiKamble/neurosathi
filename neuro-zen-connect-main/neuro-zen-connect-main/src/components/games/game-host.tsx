@@ -186,7 +186,7 @@ export function GameHost({
                 onClick={() => setDifficulty(lv)}
                 className={cn(
                   "min-h-12 rounded-xl border px-4 text-base font-semibold",
-                  difficulty === lv ? "bg-teal-700 text-white" : "bg-background",
+                  difficulty === lv ? "bg-primary text-primary-foreground shadow-sm" : "bg-card",
                 )}
               >
                 {t(lv.toLowerCase())}
@@ -217,7 +217,7 @@ export function GameHost({
       <div className="rounded-2xl border bg-card p-6 text-center shadow-sm">
         <h2 className="text-3xl font-bold">{t("complete")}</h2>
         <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
-          <div className="rounded-xl bg-teal-50 p-4 text-2xl font-bold dark:bg-teal-950">{accuracy}%</div>
+          <div className="rounded-xl border border-primary/20 bg-secondary p-4 text-2xl font-bold">{accuracy}%</div>
           <div className="rounded-xl bg-muted p-4 text-2xl font-bold">{score}</div>
           <div className="rounded-xl bg-muted p-4 text-2xl font-bold">{elapsed}s</div>
           <div className="rounded-xl bg-muted p-4 text-2xl font-bold">{nextLevel}</div>

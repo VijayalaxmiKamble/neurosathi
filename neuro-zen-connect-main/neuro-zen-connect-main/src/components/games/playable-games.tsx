@@ -82,8 +82,8 @@ function MemoryBoard({ api }: { api: GamePlayApi & { resetKey: number } }) {
             key={`${api.resetKey}-${i}`}
             className={cn(
               "flex aspect-square items-center justify-center rounded-2xl border text-4xl shadow-sm transition",
-              open ? "bg-teal-50 dark:bg-teal-950" : "bg-card",
-              matched.includes(i) && "ring-4 ring-teal-500",
+              open ? "bg-secondary" : "bg-card",
+              matched.includes(i) && "ring-4 ring-primary",
             )}
             onClick={() => flip(i)}
             aria-label={open ? `Card ${icon}` : `Card ${i + 1} face down`}
@@ -137,7 +137,7 @@ function Pictures({ api }: { api: GamePlayApi & { resetKey: number } }) {
         {choices.map((c) => (
           <button
             key={c}
-            className={cn("min-h-20 rounded-2xl border text-4xl", picked.includes(c) && "ring-4 ring-teal-600")}
+            className={cn("min-h-20 rounded-2xl border text-4xl", picked.includes(c) && "ring-4 ring-primary")}
             onClick={() => setPicked((p) => (p.includes(c) ? p.filter((x) => x !== c) : [...p, c]))}
           >
             {c}

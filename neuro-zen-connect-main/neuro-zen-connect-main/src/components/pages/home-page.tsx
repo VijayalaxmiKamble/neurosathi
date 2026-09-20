@@ -62,7 +62,7 @@ export function HomePage() {
           <h2 className="text-2xl font-bold">{t("recommended")}</h2>
           {recs.length ? (
             recs.map((r) => (
-              <div key={r.id} className="mt-3 rounded-xl bg-teal-50 p-4 dark:bg-teal-950">
+              <div key={r.id} className="mt-3 rounded-xl border border-primary/20 bg-secondary/60 p-4">
                 <p className="text-lg font-semibold">{r.title}</p>
                 <p className="text-muted-foreground">{r.detail}</p>
                 <Button className="mt-3 min-h-12" asChild>
@@ -121,7 +121,7 @@ export function HomePage() {
             {Array.from({ length: hyd.goal }).map((_, i) => (
               <button
                 key={i}
-                className={`min-h-12 min-w-12 rounded-xl border text-xl ${i < hyd.current ? "bg-sky-200" : ""}`}
+                className={`min-h-12 min-w-12 rounded-xl border text-xl ${i < hyd.current ? "bg-info/20 ring-1 ring-info/30" : "bg-card"}`}
                 onClick={() => {
                   saveData(KEYS.hydration, { ...hyd, current: i < hyd.current ? i : i + 1 });
                   refresh();
@@ -142,7 +142,7 @@ export function HomePage() {
                 <div className="text-sm text-muted-foreground">{m.time}</div>
               </div>
               {m.status === "taken" ? (
-                <span className="text-teal-700">✓</span>
+                <span className="text-success">✓</span>
               ) : (
                 <Button
                   className="min-h-11"

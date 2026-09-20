@@ -2,51 +2,58 @@ import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import {
   Activity,
   Bell,
+  BellRing,
+  BarChart3,
   Brain,
   Calendar,
+  CalendarDays,
+  ChevronDown,
+  ClipboardCheck,
   FileText,
+  GraduationCap,
   HelpCircle,
   Home,
+  Library,
   LogOut,
   Menu,
+  MessageCircle,
   Settings,
+  Moon,
+  Sun,
+  Target,
+  Trophy,
+  UserRound,
   Users,
   Volume2,
   X,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useApp } from "@/context/app-context";
 import { getSession, homeFor, logout } from "@/lib/auth";
 import { getData, KEYS } from "@/lib/storage";
+import { getNotifications } from "@/lib/feature-data";
 import type { AlertItem, Patient } from "@/lib/types";
 import { speakIfEnabled } from "@/lib/voice";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const PATIENT_NAV = [
-  { to: "/home", key: "navHome", icon: Home },
-  { to: "/games", key: "navGames", icon: Brain },
-  { to: "/memories", key: "navMemories", icon: Activity },
-  { to: "/reminders", key: "navReminders", icon: Bell },
-  { to: "/progress", key: "navProgress", icon: FileText },
-  { to: "/help", key: "navHelp", icon: HelpCircle },
-  { to: "/settings", key: "navSettings", icon: Settings },
+  { label: "Main", items: [{ to: "/home", key: "navHome", icon: Home }, { to: "/learning", key: "learningHub", icon: GraduationCap }, { to: "/games", key: "navGames", icon: Brain }, { to: "/daily-challenge", key: "dailyChallenge", icon: Target }, { to: "/daily-plan", key: "dailyPlan", icon: CalendarDays }] },
+  { label: "Progress", items: [{ to: "/progress", key: "navProgress", icon: FileText }, { to: "/analytics", key: "analytics", icon: BarChart3 }, { to: "/achievements", key: "achievements", icon: Trophy }, { to: "/reports", key: "navReports", icon: FileText }] },
+  { label: "Personal", items: [{ to: "/memories", key: "navMemories", icon: Activity }, { to: "/reminders", key: "navReminders", icon: Bell }, { to: "/notifications", key: "notifications", icon: BellRing }, { to: "/profile", key: "profile", icon: UserRound }] },
+  { label: "Support & Learning", items: [{ to: "/assessment", key: "assessment", icon: ClipboardCheck }, { to: "/resources", key: "resources", icon: Library }, { to: "/ai-assistant", key: "aiAssistant", icon: MessageCircle }, { to: "/family-dashboard", key: "familyDashboard", icon: Users }, { to: "/help", key: "navHelp", icon: HelpCircle }, { to: "/settings", key: "navSettings", icon: Settings }] },
 ] as const;
 
 const CAREGIVER_NAV = [
-  { to: "/caregiver", key: "navDashboard", icon: Home },
-  { to: "/users", key: "navUsers", icon: Users },
-  { to: "/games", key: "navGames", icon: Brain },
-  { to: "/memories", key: "navMemories", icon: Activity },
-  { to: "/reminders", key: "navReminders", icon: Bell },
-  { to: "/reports", key: "navReports", icon: FileText },
-  { to: "/alerts", key: "navAlerts", icon: Bell },
-  { to: "/settings", key: "navSettings", icon: Settings },
+  { label: "Main", items: [{ to: "/caregiver", key: "navDashboard", icon: Home }, { to: "/learning", key: "learningHub", icon: GraduationCap }, { to: "/games", key: "navGames", icon: Brain }, { to: "/daily-challenge", key: "dailyChallenge", icon: Target }, { to: "/daily-plan", key: "dailyPlan", icon: CalendarDays }] },
+  { label: "Progress", items: [{ to: "/progress", key: "navProgress", icon: FileText }, { to: "/analytics", key: "analytics", icon: BarChart3 }, { to: "/achievements", key: "achievements", icon: Trophy }, { to: "/reports", key: "navReports", icon: FileText }] },
+  { label: "Personal", items: [{ to: "/users", key: "navUsers", icon: Users }, { to: "/memories", key: "navMemories", icon: Activity }, { to: "/reminders", key: "navReminders", icon: Bell }, { to: "/notifications", key: "notifications", icon: BellRing }, { to: "/profile", key: "profile", icon: UserRound }, { to: "/alerts", key: "navAlerts", icon: Bell }] },
+  { label: "Support & Learning", items: [{ to: "/assessment", key: "assessment", icon: ClipboardCheck }, { to: "/resources", key: "resources", icon: Library }, { to: "/ai-assistant", key: "aiAssistant", icon: MessageCircle }, { to: "/family-dashboard", key: "familyDashboard", icon: Users }, { to: "/help", key: "navHelp", icon: HelpCircle }, { to: "/settings", key: "navSettings", icon: Settings }] },
 ] as const;
 
 export function AppShell({ children, title }: { children: React.ReactNode; title?: string }) {
-  const { t, session, online, settings, ready } = useApp();
+  const { t, session, online, settings, setSettings, ready } = useApp();
   const location = useLocation();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -62,6 +69,7 @@ export function AppShell({ children, title }: { children: React.ReactNode; title
   const nav = session?.role === "caregiver" ? CAREGIVER_NAV : PATIENT_NAV;
   const patient = getData<Patient[]>(KEYS.patients, [])[0];
   const alerts = getData<AlertItem[]>(KEYS.alerts, []).filter((a) => !a.acknowledged);
+  const unreadNotifications = getNotifications().filter((item) => !item.read).length;
 
   const displayName = session?.name ?? patient?.name ?? "NeuroSathi";
 
@@ -71,8 +79,6 @@ export function AppShell({ children, title }: { children: React.ReactNode; title
     });
     speakIfEnabled(`${t("emergency")}. ${patient?.caregiver ?? ""}. ${patient?.caregiverPhone ?? ""}`);
   };
-
-  const items = useMemo(() => nav, [nav]);
 
   if (!ready || !session) {
     return (
@@ -85,51 +91,44 @@ export function AppShell({ children, title }: { children: React.ReactNode; title
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-primary focus:p-3 focus:text-primary-foreground">
         {t("skip")}
       </a>
-      {open ? <button className="fixed inset-0 z-30 bg-black/40 md:hidden" aria-label="Close menu" onClick={() => setOpen(false)} /> : null}
+      {open ? <button className="fixed inset-0 z-30 bg-foreground/35 md:hidden" aria-label="Close menu" onClick={() => setOpen(false)} /> : null}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-40 flex w-[280px] flex-col gap-3 bg-[oklch(0.28_0.05_250)] p-4 text-white transition-transform md:static md:translate-x-0",
+          "fixed inset-y-0 left-0 z-40 flex w-70 flex-col gap-3 bg-sidebar p-4 text-sidebar-foreground shadow-xl transition-transform md:static md:translate-x-0",
           open ? "translate-x-0" : "-translate-x-full md:translate-x-0",
         )}
       >
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-3">
-            <div className="grid size-11 place-items-center rounded-xl bg-teal-600 text-xl" aria-hidden>
+            <div className="grid size-11 place-items-center rounded-xl bg-sidebar-primary text-xl text-sidebar-primary-foreground shadow-sm" aria-hidden>
               🧠
             </div>
             <div>
               <div className="text-lg font-bold">{t("appName")}</div>
-              <div className="text-xs text-white/70">{t("tagline")}</div>
+              <div className="text-xs text-sidebar-foreground/70">{t("tagline")}</div>
             </div>
           </div>
           <button className="md:hidden" onClick={() => setOpen(false)} aria-label="Close">
             <X />
           </button>
         </div>
-        <div className="rounded-xl bg-white/10 p-3">
+        <div className="rounded-xl border border-sidebar-border bg-sidebar-accent/70 p-3">
           <div className="font-semibold">{displayName}</div>
-          <div className="text-sm text-white/70">{online ? t("online") : t("offline")}</div>
+          <div className="text-sm text-sidebar-foreground/70">{online ? t("online") : t("offline")}</div>
         </div>
-        <nav className="flex flex-1 flex-col gap-1" aria-label="Main">
-          {items.map((item) => {
-            const active = location.pathname === item.to || location.pathname.startsWith(`${item.to}/`);
-            const Icon = item.icon;
-            return (
-              <Link
-                key={item.to}
-                to={item.to}
-                onClick={() => setOpen(false)}
-                className={cn(
-                  "flex min-h-12 items-center gap-3 rounded-xl px-3 text-base font-medium",
-                  active ? "bg-white text-[oklch(0.28_0.05_250)]" : "text-white/90 hover:bg-white/10",
-                )}
-                aria-current={active ? "page" : undefined}
-              >
-                <Icon className="size-5" />
-                {t(item.key)}
-              </Link>
-            );
-          })}
+        <nav className="flex flex-1 flex-col gap-2 overflow-y-auto" aria-label="Main">
+          {nav.map((group) => <details key={group.label} open className="group/nav">
+            <summary className="flex cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-[0.14em] text-sidebar-foreground/55 [&::-webkit-details-marker]:hidden">
+              {group.label}<ChevronDown className="size-4 transition-transform group-open/nav:rotate-180" />
+            </summary>
+            <div className="mt-1 space-y-1">
+              {group.items.map((item) => {
+                const active = location.pathname === item.to || location.pathname.startsWith(`${item.to}/`);
+                const Icon = item.icon;
+                return <Link key={item.to} to={item.to} onClick={() => setOpen(false)} className={cn("flex min-h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium", active ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-sm" : "text-sidebar-foreground/90 hover:bg-sidebar-accent")} aria-current={active ? "page" : undefined}><Icon className="size-4" />{t(item.key)}</Link>;
+              })}
+            </div>
+          </details>)}
         </nav>
         <Button
           variant="destructive"
@@ -154,13 +153,23 @@ export function AppShell({ children, title }: { children: React.ReactNode; title
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2">
+            <Button
+              variant="outline"
+              size="icon"
+              className="size-10 rounded-full"
+              onClick={() => setSettings({ theme: settings.theme === "dark" ? "light" : "dark" })}
+              aria-label={settings.theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+              title={settings.theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            >
+              {settings.theme === "dark" ? <Sun /> : <Moon />}
+            </Button>
             {settings.voice ? (
-              <span className="inline-flex items-center gap-1 rounded-full bg-teal-100 px-3 py-1 text-sm text-teal-900 dark:bg-teal-900 dark:text-teal-100">
+              <span className="inline-flex items-center gap-1 rounded-full bg-secondary px-3 py-1 text-sm text-secondary-foreground">
                 <Volume2 className="size-4" /> {t("voice")}
               </span>
             ) : null}
-            <Button variant="outline" className="min-h-12" onClick={() => void navigate({ to: "/alerts" })}>
-              <Bell className="size-5" /> {alerts.length}
+            <Button variant="outline" className="min-h-12" onClick={() => void navigate({ to: "/notifications" })}>
+              <Bell className="size-5" /> {unreadNotifications}
             </Button>
             <Button variant="destructive" className="min-h-12" onClick={emergency}>
               {t("emergency")}
