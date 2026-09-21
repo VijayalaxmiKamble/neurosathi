@@ -21,6 +21,7 @@ import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RemindersRouteImport } from './routes/reminders'
 import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as UsersRouteImport } from './routes/users'
 import { Route as GamesIndexRouteImport } from './routes/games/index'
@@ -86,6 +87,11 @@ const ReportsRoute = ReportsRouteImport.update({
   path: '/reports',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -120,6 +126,7 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/reminders': typeof RemindersRoute
   '/reports': typeof ReportsRoute
+  '/resources': typeof ResourcesRoute
   '/settings': typeof SettingsRoute
   '/users': typeof UsersRoute
   '/games/$gameId': typeof GamesGameIdRoute
@@ -138,6 +145,7 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/reminders': typeof RemindersRoute
   '/reports': typeof ReportsRoute
+  '/resources': typeof ResourcesRoute
   '/settings': typeof SettingsRoute
   '/users': typeof UsersRoute
   '/games/$gameId': typeof GamesGameIdRoute
@@ -157,6 +165,7 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/reminders': typeof RemindersRoute
   '/reports': typeof ReportsRoute
+  '/resources': typeof ResourcesRoute
   '/settings': typeof SettingsRoute
   '/users': typeof UsersRoute
   '/games/$gameId': typeof GamesGameIdRoute
@@ -177,6 +186,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/reminders'
     | '/reports'
+    | '/resources'
     | '/settings'
     | '/users'
     | '/games/$gameId'
@@ -195,6 +205,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/reminders'
     | '/reports'
+    | '/resources'
     | '/settings'
     | '/users'
     | '/games/$gameId'
@@ -213,6 +224,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/reminders'
     | '/reports'
+    | '/resources'
     | '/settings'
     | '/users'
     | '/games/$gameId'
@@ -232,6 +244,7 @@ export interface RootRouteChildren {
   RegisterRoute: typeof RegisterRoute
   RemindersRoute: typeof RemindersRoute
   ReportsRoute: typeof ReportsRoute
+  ResourcesRoute: typeof ResourcesRoute
   SettingsRoute: typeof SettingsRoute
   UsersRoute: typeof UsersRoute
   GamesGameIdRoute: typeof GamesGameIdRoute
@@ -324,6 +337,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReportsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -368,6 +388,7 @@ const rootRouteChildren: RootRouteChildren = {
   RegisterRoute: RegisterRoute,
   RemindersRoute: RemindersRoute,
   ReportsRoute: ReportsRoute,
+  ResourcesRoute: ResourcesRoute,
   SettingsRoute: SettingsRoute,
   UsersRoute: UsersRoute,
   GamesGameIdRoute: GamesGameIdRoute,

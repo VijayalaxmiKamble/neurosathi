@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import {
   Activity,
   Bell,
+  BookOpen,
   Brain,
   Calendar,
   FileText,
@@ -30,6 +31,7 @@ const PATIENT_NAV = [
   { to: "/memories", key: "navMemories", icon: Activity },
   { to: "/reminders", key: "navReminders", icon: Bell },
   { to: "/progress", key: "navProgress", icon: FileText },
+  { to: "/resources", key: "navResources", icon: BookOpen },
   { to: "/help", key: "navHelp", icon: HelpCircle },
   { to: "/settings", key: "navSettings", icon: Settings },
 ] as const;
