@@ -13,7 +13,6 @@ NeuroSaathi is a Smart India Hackathon project addressing Problem Statement 2600
 > "AI-Based Cognitive Gaming and Memory Assistance Platform for Elderly Dementia Patients in North Eastern Region (NER)"
 
 **Important:** NeuroSaathi is a support and engagement platform. It does not diagnose or treat any medical condition.
-
 ---
 
 ## ✨ Key Features
