@@ -135,7 +135,7 @@
       { id: "al-4", patientId: "p-001", patient: "Mrs. Sharma", severity: "LOW", category: "Appointment approaching", message: "Appointment with Dr. Sharma in 2 days.", time: "3 h ago", acknowledged: true },
     ],
     settings: {
-      language: "en", textSize: "normal", contrast: "normal", motion: "normal",
+      language: "en", theme: "light", textSize: "normal", contrast: "normal", motion: "normal",
       notifications: true, voice: true, dataSharing: false, consent: true,
     },
   };

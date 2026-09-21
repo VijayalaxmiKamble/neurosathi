@@ -88,13 +88,13 @@ export function AppShell({ children, title }: { children: React.ReactNode; title
       {open ? <button className="fixed inset-0 z-30 bg-black/40 md:hidden" aria-label="Close menu" onClick={() => setOpen(false)} /> : null}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-40 flex w-[280px] flex-col gap-3 bg-[oklch(0.28_0.05_250)] p-4 text-white transition-transform md:static md:translate-x-0",
+          "fixed inset-y-0 left-0 z-40 flex w-70 flex-col gap-3 bg-sidebar p-4 text-sidebar-foreground transition-transform md:static md:translate-x-0",
           open ? "translate-x-0" : "-translate-x-full md:translate-x-0",
         )}
       >
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-3">
-            <div className="grid size-11 place-items-center rounded-xl bg-teal-600 text-xl" aria-hidden>
+            <div className="grid size-11 place-items-center rounded-xl bg-emerald-700 text-xl" aria-hidden>
               🧠
             </div>
             <div>
@@ -121,7 +121,7 @@ export function AppShell({ children, title }: { children: React.ReactNode; title
                 onClick={() => setOpen(false)}
                 className={cn(
                   "flex min-h-12 items-center gap-3 rounded-xl px-3 text-base font-medium",
-                  active ? "bg-white text-[oklch(0.28_0.05_250)]" : "text-white/90 hover:bg-white/10",
+                  active ? "bg-sidebar-primary text-sidebar-primary-foreground" : "text-sidebar-foreground/90 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
                 )}
                 aria-current={active ? "page" : undefined}
               >
@@ -155,7 +155,7 @@ export function AppShell({ children, title }: { children: React.ReactNode; title
           </div>
           <div className="flex flex-wrap items-center gap-2">
             {settings.voice ? (
-              <span className="inline-flex items-center gap-1 rounded-full bg-teal-100 px-3 py-1 text-sm text-teal-900 dark:bg-teal-900 dark:text-teal-100">
+              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-3 py-1 text-sm text-emerald-900 dark:bg-emerald-900/60 dark:text-emerald-100">
                 <Volume2 className="size-4" /> {t("voice")}
               </span>
             ) : null}

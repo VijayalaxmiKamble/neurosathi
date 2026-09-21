@@ -92,9 +92,17 @@
   const applySettings = () => {
     const s = NS.storage.getData(NS.storage.KEYS.settings, {}) || {};
     const r = document.documentElement;
+    r.dataset.theme = s.theme === "dark" ? "dark" : "light";
     r.dataset.textSize = s.textSize || "normal";
     r.dataset.contrast = s.contrast || "normal";
     r.dataset.motion = s.motion || "normal";
+    const themeButton = document.getElementById("theme-toggle");
+    if (themeButton) {
+      const dark = r.dataset.theme === "dark";
+      themeButton.textContent = dark ? "☀️" : "🌙";
+      themeButton.title = dark ? "Switch to light mode" : "Switch to dark mode";
+      themeButton.setAttribute("aria-label", themeButton.title);
+    }
     if (NS.i18n) NS.i18n.applyTranslations();
   };
 
@@ -245,6 +253,7 @@
           <select id="lang-select" style="width:auto;min-width:150px">
             ${NS.i18n.LANGUAGES.map((l) => `<option value="${l.code}">${l.label}</option>`).join("")}
           </select>
+          <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">🌙</button>
           <span class="badge" data-online-status></span>
           <button class="icon-btn" id="notif-btn" aria-label="Notifications">🔔</button>
           <button class="btn btn-danger btn-sm" id="emergency-btn">🚨 Emergency</button>
@@ -294,6 +303,14 @@
     if (logout) logout.addEventListener("click", () => NS.auth.logout());
     const em = document.getElementById("emergency-btn");
     if (em) em.addEventListener("click", openEmergency);
+    const themeButton = document.getElementById("theme-toggle");
+    if (themeButton) themeButton.addEventListener("click", () => {
+      const settings = NS.storage.getData(NS.storage.KEYS.settings, {}) || {};
+      NS.storage.saveData(NS.storage.KEYS.settings, Object.assign({}, settings, {
+        theme: document.documentElement.dataset.theme === "dark" ? "light" : "dark",
+      }));
+      applySettings();
+    });
     const notifBtn = document.getElementById("notif-btn");
     if (notifBtn) notifBtn.addEventListener("click", () => {
       requestNotificationPermission();

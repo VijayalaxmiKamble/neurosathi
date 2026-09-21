@@ -33,6 +33,10 @@ window.PAGE_INIT = function () {
     <div class="field"><label for="s-lang">Language</label><select id="s-lang">
       ${Object.keys(langs).map((k) => `<option value="${k}" ${s.language === k ? "selected" : ""}>${langs[k]}</option>`).join("")}
     </select></div>
+    <div class="field"><label for="s-theme">Theme</label><select id="s-theme">
+      <option value="light" ${s.theme !== "dark" ? "selected" : ""}>Light</option>
+      <option value="dark" ${s.theme === "dark" ? "selected" : ""}>Dark</option>
+    </select></div>
     <div class="field"><label for="s-text">Text size</label><select id="s-text">
       ${["normal", "large", "xlarge"].map((v) => `<option value="${v}" ${s.textSize === v ? "selected" : ""}>${v}</option>`).join("")}
     </select></div>
@@ -44,6 +48,9 @@ window.PAGE_INIT = function () {
     </select></div>`;
   document.getElementById("s-lang").addEventListener("change", (e) => {
     NS.i18n.setLang(e.target.value); NS.showToast("Language updated.", "success");
+  });
+  document.getElementById("s-theme").addEventListener("change", (e) => {
+    patch({ theme: e.target.value }); NS.showToast("Theme updated.", "success");
   });
   document.getElementById("s-text").addEventListener("change", (e) => { patch({ textSize: e.target.value }); NS.showToast("Text size updated.", "success"); });
   document.getElementById("s-contrast").addEventListener("change", (e) => { patch({ contrast: e.target.value }); });

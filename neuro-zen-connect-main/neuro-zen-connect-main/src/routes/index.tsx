@@ -1,5 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { LoginPage } from "@/components/pages/login-page";
+import { useEffect } from "react";
+
+function OriginalDashboardRedirect() {
+  useEffect(() => {
+    window.location.replace("/neurosaathi-dashboard/index.html");
+  }, []);
+
+  return null;
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -20,5 +28,5 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: LoginPage,
+  component: OriginalDashboardRedirect,
 });
